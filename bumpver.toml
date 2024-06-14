@@ -5,7 +5,7 @@ version_pattern = "MAJOR.MINOR.PATCH"
 commit_message = "bump version {old_version} -> {new_version}"
 tag_message = "{new_version}"
 tag_scope = "default"
-commit = true
+commit = false
 tag = true
 push = false
 
