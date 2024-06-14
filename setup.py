@@ -1,0 +1,33 @@
+
+from setuptools import setup, find_packages
+from setuptools.command.install import install
+
+setup(
+    name="BrownieCutter",
+    version="0.0.1",
+    description="Quick script to create new python project",
+    long_description="Quick script to create new python project",
+    url="https://github.com/thiswillbeyourgithub/BrownieCutter",
+    packages=find_packages(),
+
+    classifiers=[
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+        "Operating System :: OS Independent",
+    ],
+    license="GPLv3",
+    keywords=["cookiecutter", "pypi", "install", "package", "python", "minimal", "minimalist", "tool"],
+    python_requires=">=3.11",
+
+    entry_points={
+        'console_scripts': [
+            'BrownieCutter=src.__init__:cli_launcher',
+        ],
+    },
+
+    install_requires=[
+        "fire >= 0.6.0",
+        "typeguard >= 4.3.0",
+    ],
+
+)
