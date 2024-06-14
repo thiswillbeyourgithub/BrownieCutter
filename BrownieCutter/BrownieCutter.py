@@ -180,7 +180,6 @@ if __name__ == "__main__":
                 proj_file,
                 content=(
 f'''
-import fire
 from typeguard import typechecked
 
 # TODO_imports
