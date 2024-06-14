@@ -146,11 +146,8 @@ setup(
             )
         )
 
-        innerproject = src / project_name
-        self.create_dir(innerproject)
-
         self.create_file(
-                innerproject / "__main__.py",
+                src / "__main__.py",
                 content=(
 f'''
 from . import cli_launcher
@@ -162,7 +159,7 @@ if __name__ == "__main__":
         )
 
         self.create_file(
-                innerproject / "__init__.py",
+                src / "__init__.py",
                 content=(
 f'''
 import fire
@@ -178,7 +175,7 @@ if __name__ == "__main__":
             )
         )
 
-        proj_file = innerproject / (project_name + ".py")
+        proj_file = src / (project_name + ".py")
         self.create_file(
                 proj_file,
                 content=(
