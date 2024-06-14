@@ -38,6 +38,7 @@ class BrownieCutter:
                 content=(
 f'''
 **/*pycache*
+**/*egg-info*
 
 TODO_gitignore
 '''
