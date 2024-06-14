@@ -21,7 +21,7 @@ setup(
 
     entry_points={
         'console_scripts': [
-            'BrownieCutter=src.__init__:cli_launcher',
+            'BrownieCutter=BrownieCutter.__init__:cli_launcher',
         ],
     },
 

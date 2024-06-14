@@ -49,7 +49,7 @@ TODO_gitignore
             except Exception as err:
                 print(f"Couldn't init git dir: '{err}'")
 
-        src = project / "src"
+        src = project / project_name
         self.create_dir(src)
 
         self.create_file(
@@ -93,7 +93,7 @@ push = false
 [bumpver.file_patterns]
 "bumpver.toml" = ['current_version = "{version}"']
 "setup.py" = ['version="{version}"']
-"src/{project_name}.py" = ['VERSION: str = "{version}"']
+"{project_name}/{project_name}.py" = ['VERSION: str = "{version}"']
 
 '''
             )
@@ -126,7 +126,7 @@ setup(
 
     entry_points={
         'console_scripts': [
-            '{project_name}=src.__init__:cli_launcher',
+            '{project_name}={project_name}.__init__:cli_launcher',
         ],
     },
 
