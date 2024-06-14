@@ -82,7 +82,7 @@ TODO_tutorial
 f'''
 [bumpver]
 current_version = "0.0.1"
-version_pattern = "MAJOR.MINOR.PATH"
+version_pattern = "MAJOR.MINOR.PATCH"
 commit_message = "bump version {old_version} -> {new_version}"
 tag_message = "{new_version}"
 tag_scope = "default"
