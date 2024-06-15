@@ -133,6 +133,7 @@ setup(
 
     install_requires=[
         "fire >= 0.6.0",
+        "typeguard >= 0.4.3",
         # TODO_req
     ],
     extra_require={
