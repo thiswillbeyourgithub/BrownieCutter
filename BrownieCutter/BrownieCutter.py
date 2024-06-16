@@ -20,6 +20,20 @@ class BrownieCutter:
         verbose: bool=True,
         create_git: bool = True,
         ) -> None:
+        """
+        Create a new project directory with the specified structure and files.
+
+        Parameters:
+        -----------
+        - project_name (str): The name of the project directory to be created. This will also be used as the default class name if `project_class` is not provided.
+
+        - project_class (str, optional): The name of the main class for the project. Defaults to the value of `project_name`. Must be a valid Python class name (no spaces, starts with a letter).
+
+        - verbose (bool, optional): If True, prints progress messages. Defaults to True.
+
+        - create_git (bool, optional): If True, initializes a git repository in the project directory. Defaults to True.
+        """
+
         if verbose:
             self.p = self.printer
         else:
