@@ -35,7 +35,7 @@ class BrownieCutter:
 
         - create_git (bool, optional): If True, initializes a git repository in the project directory. Defaults to True.
 
-        - create_pyenv: create a new virtual env using pyenv with name env_{project_name} Automatically activate it using .env and .env.leave files (thanks to autoenv).
+        - create_pyenv: create a new virtual env using pyenv with name bc_{project_name} Automatically activate it using .env and .env.leave files (thanks to autoenv).
         """
 
         if verbose:
@@ -224,7 +224,7 @@ TODO_gitignore
                 print(f"Couldn't init git dir: '{err}'")
 
         if create_pyenv:
-            env_name = "env_" + project_name.replace(" ", "_")
+            env_name = "bc_" + project_name.replace(" ", "_")
             os.system(f"cd {project_name} && pyenv virtualenv {sys.version.split(' ')[0]} {env_name} && touch .env .env.leave && pyenv activate {env_name} && python -m pip install build")
             if (project / ".env").exists() and (project / ".env.leave").exists():
                 self.create_file(
