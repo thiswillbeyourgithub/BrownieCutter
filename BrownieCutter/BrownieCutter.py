@@ -8,6 +8,9 @@ class BrownieCutter:
 
     @typechecked
     def __init__(self) -> None:
+        """
+        Docstring can be found at self.create.__doc__
+        """
         pass
 
     def create(
