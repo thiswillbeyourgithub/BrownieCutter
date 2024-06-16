@@ -225,7 +225,7 @@ TODO_gitignore
 
         if create_pyenv:
             env_name = "env_" + project_name.replace(" ", "_")
-            os.system(f"cd {project_name} && pyenv virtualenv {sys.version.split(' ')[0]} {env_name} && touch .env .env.leave")
+            os.system(f"cd {project_name} && pyenv virtualenv {sys.version.split(' ')[0]} {env_name} && touch .env .env.leave && pyenv activate {env_name} && python -m pip install build")
             if (project / ".env").exists() and (project / ".env.leave").exists():
                 self.create_file(
                     project / ".env",
