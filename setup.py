@@ -2,11 +2,15 @@
 from setuptools import setup, find_packages
 from setuptools.command.install import install
 
+with open("README.md", "r") as readme:
+    long_description = readme.read()
+
 setup(
     name="BrownieCutter",
     version="0.1.5",
     description="Quick script to create new python project",
-    long_description="Quick script to create new python project",
+    long_description=long_description,
+    long_description_content_type="text/markdown",
     url="https://github.com/thiswillbeyourgithub/BrownieCutter",
     packages=find_packages(),
 
