@@ -1,3 +1,4 @@
+import sys
 from pathlib import Path, PosixPath
 import fire
 from typeguard import typechecked
@@ -19,6 +20,7 @@ class BrownieCutter:
         project_class: str = None,
         verbose: bool=True,
         create_git: bool = True,
+        create_pyenv: bool = True,
         ) -> None:
         """
         Create a new project directory with the specified structure and files.
@@ -32,6 +34,8 @@ class BrownieCutter:
         - verbose (bool, optional): If True, prints progress messages. Defaults to True.
 
         - create_git (bool, optional): If True, initializes a git repository in the project directory. Defaults to True.
+
+        - create_pyenv: create a new virtual env using pyenv with name env_{project_name} Automatically activate it using .env and .env.leave files (thanks to autoenv).
         """
 
         if verbose:
@@ -219,6 +223,23 @@ TODO_gitignore
             except Exception as err:
                 print(f"Couldn't init git dir: '{err}'")
 
+        if create_pyenv:
+            env_name = "env_" + project_name.replace(" ", "_")
+            os.system(f"cd {project_name} && pyenv virtualenv {sys.version.split(' ')[0]} {env_name} && touch .env .env.leave")
+            if (project / ".env").exists() and (project / ".env.leave").exists():
+                self.create_file(
+                    project / ".env",
+                    content=f"pyenv activate {env_name}",
+                    create=True,
+                )
+                self.create_file(
+                    project / ".env.leave",
+                    content="pyenv deactivate",
+                    create=True,
+                )
+            else:
+                print(f"No {project_name}/.env file and .env.leave file found, assuming pyenv creation failed.")
+
         print(f"\nDone creating {project_name}, you can now manually replace all the missing TODO.")
 
         return
@@ -238,9 +259,9 @@ TODO_gitignore
         path.mkdir(exist_ok=False)
 
     @typechecked
-    def create_file(self, path: PosixPath, content: str) -> None:
+    def create_file(self, path: PosixPath, content: str, create: bool = False) -> None:
         self.p(f"Creating file '{path}'")
-        path.touch(exist_ok=False)
+        path.touch(exist_ok=create)
         if content:
             path.write_text(content)
 
