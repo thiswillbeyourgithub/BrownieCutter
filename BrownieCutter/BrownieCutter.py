@@ -200,8 +200,6 @@ class {project_class}:
             )
         )
 
-        print(f"\nDone creating {project_name}, you can now manually replace all the missing TODO.")
-
         if create_git:
             self.create_file(
                 project / ".gitignore",
@@ -220,6 +218,8 @@ TODO_gitignore
                 os.system(f"cd {project_name} && git init && git add {to_add} && git commit -m 'First commit (via BrownieCutter)'")
             except Exception as err:
                 print(f"Couldn't init git dir: '{err}'")
+
+        print(f"\nDone creating {project_name}, you can now manually replace all the missing TODO.")
 
         return
 
