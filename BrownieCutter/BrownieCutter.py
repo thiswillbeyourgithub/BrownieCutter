@@ -35,24 +35,6 @@ class BrownieCutter:
 
         self.create_dir(project)
 
-        if create_git:
-            self.create_file(
-                project / ".gitignore",
-                content=(
-f'''
-**/*pycache*
-**/*egg-info*
-
-TODO_gitignore
-'''
-                )
-            )
-            try:
-                self.p("Init git dir")
-                os.system(f"cd {project_name} && git init")
-            except Exception as err:
-                print(f"Couldn't init git dir: '{err}'")
-
         src = project / project_name
         self.create_dir(src)
 
@@ -205,6 +187,25 @@ class {project_class}:
         )
 
         print(f"\nDone creating {project_name}, you can now manually replace all the missing TODO.")
+
+        if create_git:
+            self.create_file(
+                project / ".gitignore",
+                content=(
+f'''
+**/*pycache*
+**/*egg-info*
+
+TODO_gitignore
+'''
+                )
+            )
+            try:
+                self.p("Init git dir")
+                to_add = f".gitignore README.md setup.py LICENSE.md bumpver.toml {project_name}"
+                os.system(f"cd {project_name} && git init && git add {to_add} && git commit -m 'First commit (via BrownieCutter)'")
+            except Exception as err:
+                print(f"Couldn't init git dir: '{err}'")
 
         return
 
