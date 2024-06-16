@@ -4,7 +4,7 @@ from setuptools.command.install import install
 
 setup(
     name="BrownieCutter",
-    version="0.1.2",
+    version="0.1.3",
     description="Quick script to create new python project",
     long_description="Quick script to create new python project",
     url="https://github.com/thiswillbeyourgithub/BrownieCutter",
