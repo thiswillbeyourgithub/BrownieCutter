@@ -5,7 +5,7 @@ from typeguard import typechecked
 import os
 
 class BrownieCutter:
-    VERSION: str = "0.1.4"
+    VERSION: str = "0.1.5"
 
     @typechecked
     def __init__(self) -> None:
@@ -189,7 +189,7 @@ from typeguard import typechecked
 # TODO_imports
 
 class {project_class}:
-    VERSION: str = "0.1.4"
+    VERSION: str = "0.1.5"
 
     @typechecked
     def __init__(
