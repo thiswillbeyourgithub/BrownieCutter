@@ -198,7 +198,7 @@ from typeguard import typechecked
 # TODO_imports
 
 class {project_class}:
-    VERSION: str = "0.1.8"
+    VERSION: str = "0.0.1"
 
     @typechecked
     def __init__(
