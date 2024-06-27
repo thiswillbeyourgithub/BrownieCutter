@@ -198,7 +198,7 @@ from typeguard import typechecked
 # TODO_imports
 
 class {project_class}:
-    VERSION: str = "0.0.1"
+    VER_IGNORE_SION: str = "0.0.1"
 
     @typechecked
     def __init__(
@@ -210,6 +210,9 @@ class {project_class}:
 
     TODO_code
 '''.strip()
+            ).replace(  # we can't use VERSION directly otherwise bumpver will update it
+                "VER_IGNORE_SION",
+                "VERSION"
             )
         )
 
