@@ -175,6 +175,8 @@ import fire
 
 from .{project_name} import {project_class}
 
+__all__ = ["{project_class}"]
+
 __VERSION__ = {project_class}.VERSION
 
 def cli_launcher() -> None:
