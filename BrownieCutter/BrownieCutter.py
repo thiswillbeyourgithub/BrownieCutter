@@ -130,7 +130,7 @@ setup(
         "Operating System :: OS Independent",
     ],
     license="GPLv3",
-    keywords=[],
+    keywords=["TODO_keywords"],
     python_requires=">=3.11",
 
     entry_points={
