@@ -114,7 +114,6 @@ from setuptools.command.install import install
 with open("README.md", "r") as readme:
     long_description = readme.read()
 
-
 setup(
     name="{project_name}",
     version="0.0.1",
