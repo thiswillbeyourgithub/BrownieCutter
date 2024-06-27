@@ -14,6 +14,7 @@ class BrownieCutter:
         """
         pass
 
+    @typechecked
     def create(
         self,
         project_name: str,
