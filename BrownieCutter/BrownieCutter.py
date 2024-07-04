@@ -4,17 +4,16 @@ import fire
 from beartype import beartype
 import os
 
+@beartype  # this will apply to all methods
 class BrownieCutter:
     VERSION: str = "0.1.10"
 
-    @beartype
     def __init__(self) -> None:
         """
         Docstring can be found at self.create.__doc__
         """
         pass
 
-    @beartype
     def create(
         self,
         project_name: str,
@@ -107,6 +106,63 @@ push = false
             )
         )
 
+        setup_content = '''
+from setuptools import setup, find_packages
+from setuptools.command.install import install
+
+with open("README.md", "r") as readme:
+    long_description = readme.read()
+
+setup(
+    name="{project_name}",
+    version="0.0.1",
+    description="TODO_description",
+    long_description=long_description,
+    long_description_content_type="text/markdown",
+    url="TODO_URL",
+    packages=find_packages(),
+
+    # TODO_check_values
+    classifiers=[
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+        "Operating System :: OS Independent",
+    ],
+    license="GPLv3",
+    keywords=["TODO_keywords"],
+    python_requires=">=3.11",
+
+    entry_points={
+        'console_scripts': [
+            '{project_name}={project_name}.__init__:cli_launcher',
+        ],
+    },
+
+    install_requires=[
+        'fire >= 0.6.0',
+        'beartype >= 0.18.5',
+        # TODO_req
+    ],
+    extra_require={
+    'feature1': [
+        # TODO_req
+        ],
+    'feature2': [
+        # TODO_req
+        ]
+    },
+
+)
+'''
+        setup_content = setup_content.replace("{project_name}", project_name)
+        if not typechecking:
+            setup_content = "".join(
+                [
+                    li
+                    for li in setup_content.splitlines(keepends=True)
+                    if "beatype" not in li
+                ]
+                )
         self.create_file(
             project / "setup.py",
             content=(
@@ -143,7 +199,8 @@ setup(
     },
 
     install_requires=[
-        "fire >= 0.6.0",''' + ('\n        "beartype >= 0.18.5",' if typechecking else "") + '''
+        'fire >= 0.6.0',
+        'beartype >= 0.18.5',
         # TODO_req
     ],
     extra_require={
@@ -194,18 +251,14 @@ if __name__ == "__main__":
         )
 
         proj_file = src / (project_name + ".py")
-        self.create_file(
-                proj_file,
-                content=(
-((f'''
+        project_content = '''
 from beartype import beartype
-''' if typechecking else "") + '''
 # TODO_imports
 
+@beartype  # this will apply to all methods
 class {classname}:
     VER_IGNORE_SION: str = "0.0.1"
 
-    @beartype
     def __init__(
         self,
         ) -> None:\n
@@ -213,12 +266,23 @@ class {classname}:
         # TODO_docstring
         """
 
-    TODO_code
-'''.strip()
-            )).replace(  # we can't use VERSION directly otherwise bumpver will update it
-                "VER_IGNORE_SION",
-                "VERSION"
-            ).replace("@beartype", "" if not typechecking else "@beartype")
+# TODO_code
+'''
+        project_content = project_content.strip().replace(
+                    "VER_IGNORE_SION",
+                    "VERSION"
+                )
+        if not typechecking:
+            project_content = "".join(
+                [
+                    li
+                    for li in project_content.splitlines(keepends=True)
+                    if "beatype" not in li
+                ]
+                )
+        self.create_file(
+                proj_file,
+                content=project_content,
         )
 
         if create_git:
@@ -262,20 +326,16 @@ TODO_gitignore
         return
 
 
-    @beartype
     def printer(self, string: str) -> None:
         print(string)
 
-    @beartype
     def fake_printer(self, string: str) -> None:
         return
 
-    @beartype
     def create_dir(self, path: PosixPath) -> None:
         self.p(f"Creating dir '{path}'")
         path.mkdir(exist_ok=False)
 
-    @beartype
     def create_file(self, path: PosixPath, content: str, create: bool = False) -> None:
         self.p(f"Creating file '{path}'")
         path.touch(exist_ok=create)
