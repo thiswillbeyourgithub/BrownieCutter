@@ -110,7 +110,7 @@ push = false
         self.create_file(
             project / "setup.py",
             content=(
-'''
+('''
 from setuptools import setup, find_packages
 from setuptools.command.install import install
 
@@ -156,7 +156,7 @@ setup(
     },
 
 )
-'''.replace("{project_name}", project_name)
+''').replace("{project_name}", project_name)
             )
         )
 
@@ -197,7 +197,7 @@ if __name__ == "__main__":
         self.create_file(
                 proj_file,
                 content=(
-(f'''
+((f'''
 from beartype import beartype
 ''' if typechecking else "") + '''
 # TODO_imports
@@ -215,7 +215,7 @@ class {classname}:
 
     TODO_code
 '''.strip()
-            ).replace(  # we can't use VERSION directly otherwise bumpver will update it
+            )).replace(  # we can't use VERSION directly otherwise bumpver will update it
                 "VER_IGNORE_SION",
                 "VERSION"
             ).replace("@beartype", "" if not typechecking else "@beartype")
