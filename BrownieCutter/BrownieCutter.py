@@ -147,7 +147,10 @@ setup(
         # TODO_req
     ],
     extra_require={
-    'optionnal_feature': [
+    'feature1': [
+        # TODO_req
+        ],
+    'feature2': [
         # TODO_req
         ]
     },
