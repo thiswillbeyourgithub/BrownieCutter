@@ -19,7 +19,7 @@ class BrownieCutter:
         self,
         project_name: str,
         classname: str = None,
-        verbose: bool=True,
+        verbose: bool = True,
         create_git: bool = True,
         create_pyenv: bool = True,
         typechecking: bool = True,
