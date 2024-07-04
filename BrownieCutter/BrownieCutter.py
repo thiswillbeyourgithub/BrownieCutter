@@ -22,6 +22,7 @@ class BrownieCutter:
         verbose: bool=True,
         create_git: bool = True,
         create_pyenv: bool = True,
+        typechecking: bool = True,
         ) -> None:
         """
         Create a new project directory with the specified structure and files.
@@ -36,7 +37,9 @@ class BrownieCutter:
 
         - create_git (bool, optional): If True, initializes a git repository in the project directory. Defaults to True.
 
-        - create_pyenv: create a new virtual env using pyenv with name bc_{project_name} Automatically activate it using .env and .env.leave files (thanks to autoenv).
+        - create_pyenv: create a new virtual env using pyenv with name bc_{project_name} Automatically activate it using .env and .env.leave files (thanks to autoenv). Defaults to True.
+
+        - typechecking: automatically add beartype typechecking. Defaults to True.
         """
 
         if verbose:
@@ -140,8 +143,7 @@ setup(
     },
 
     install_requires=[
-        "fire >= 0.6.0",
-        "beartype >= 0.18.5",
+        "fire >= 0.6.0",''' + ('\n        "beartype >= 0.18.5",' if typechecking else "") + '''
         # TODO_req
     ],
     extra_require={
@@ -192,9 +194,9 @@ if __name__ == "__main__":
         self.create_file(
                 proj_file,
                 content=(
-f'''
+(f'''
 from beartype import beartype
-
+''' if typechecking else "") + '''
 # TODO_imports
 
 class {project_class}:
@@ -213,7 +215,7 @@ class {project_class}:
             ).replace(  # we can't use VERSION directly otherwise bumpver will update it
                 "VER_IGNORE_SION",
                 "VERSION"
-            )
+            ).replace("@beartype", "" if not typechecking else "@beartype")
         )
 
         if create_git:
