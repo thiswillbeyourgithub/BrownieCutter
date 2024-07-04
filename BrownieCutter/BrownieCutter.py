@@ -18,7 +18,7 @@ class BrownieCutter:
     def create(
         self,
         project_name: str,
-        project_class: str = None,
+        classname: str = None,
         verbose: bool=True,
         create_git: bool = True,
         create_pyenv: bool = True,
@@ -29,9 +29,9 @@ class BrownieCutter:
 
         Parameters:
         -----------
-        - project_name (str): The name of the project directory to be created. This will also be used as the default class name if `project_class` is not provided.
+        - project_name (str): The name of the project directory to be created. This will also be used as the default class name if `classname` is not provided.
 
-        - project_class (str, optional): The name of the main class for the project. Defaults to the value of `project_name`. Must be a valid Python class name (no spaces, starts with a letter).
+        - classname (str, optional): The name of the main class for the project. Defaults to the value of `project_name`. Must be a valid Python class name (no spaces, starts with a letter).
 
         - verbose (bool, optional): If True, prints progress messages. Defaults to True.
 
@@ -46,11 +46,11 @@ class BrownieCutter:
             self.p = self.printer
         else:
             self.p = self.fake_printer
-        if project_class is None:
-            project_class = project_name
+        if classname is None:
+            classname = project_name
 
-        assert " " not in project_class, "no space can exist in the class name"
-        assert project_class[0].isalpha(), "project class must be a valid class name"
+        assert " " not in classname, "no space can exist in the class name"
+        assert classname[0].isalpha(), "project class must be a valid class name"
 
         project = Path(project_name)
         assert not project.exists(), f"Dir already found: '{project}'"
@@ -175,14 +175,14 @@ if __name__ == "__main__":
 f'''
 import fire
 
-from .{project_name} import {project_class}
+from .{project_name} import {classname}
 
-__all__ = ["{project_class}"]
+__all__ = ["{classname}"]
 
-__VERSION__ = {project_class}.VERSION
+__VERSION__ = {classname}.VERSION
 
 def cli_launcher() -> None:
-    fire.Fire({project_class})
+    fire.Fire({classname})
 
 if __name__ == "__main__":
     cli_launcher()
@@ -199,7 +199,7 @@ from beartype import beartype
 ''' if typechecking else "") + '''
 # TODO_imports
 
-class {project_class}:
+class {classname}:
     VER_IGNORE_SION: str = "0.0.1"
 
     @beartype
