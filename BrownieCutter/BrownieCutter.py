@@ -5,7 +5,7 @@ from beartype import beartype
 import os
 
 class BrownieCutter:
-    VERSION: str = "0.1.9"
+    VERSION: str = "0.1.10"
 
     @beartype
     def __init__(self) -> None:
