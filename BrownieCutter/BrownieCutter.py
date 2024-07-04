@@ -1,20 +1,20 @@
 import sys
 from pathlib import Path, PosixPath
 import fire
-from typeguard import typechecked
+from beartype import beartype
 import os
 
 class BrownieCutter:
     VERSION: str = "0.1.9"
 
-    @typechecked
+    @beartype
     def __init__(self) -> None:
         """
         Docstring can be found at self.create.__doc__
         """
         pass
 
-    @typechecked
+    @beartype
     def create(
         self,
         project_name: str,
@@ -141,7 +141,7 @@ setup(
 
     install_requires=[
         "fire >= 0.6.0",
-        "typeguard >= 0.4.3",
+        "beartype >= 0.18.5",
         # TODO_req
     ],
     extra_require={
@@ -193,14 +193,14 @@ if __name__ == "__main__":
                 proj_file,
                 content=(
 f'''
-from typeguard import typechecked
+from beartype import beartype
 
 # TODO_imports
 
 class {project_class}:
     VER_IGNORE_SION: str = "0.0.1"
 
-    @typechecked
+    @beartype
     def __init__(
         self,
         ) -> None:\n
@@ -257,20 +257,20 @@ TODO_gitignore
         return
 
 
-    @typechecked
+    @beartype
     def printer(self, string: str) -> None:
         print(string)
 
-    @typechecked
+    @beartype
     def fake_printer(self, string: str) -> None:
         return
 
-    @typechecked
+    @beartype
     def create_dir(self, path: PosixPath) -> None:
         self.p(f"Creating dir '{path}'")
         path.mkdir(exist_ok=False)
 
-    @typechecked
+    @beartype
     def create_file(self, path: PosixPath, content: str, create: bool = False) -> None:
         self.p(f"Creating file '{path}'")
         path.touch(exist_ok=create)
