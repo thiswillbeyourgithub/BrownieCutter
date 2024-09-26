@@ -31,7 +31,7 @@ setup(
 
     install_requires=[
         "fire >= 0.6.0",
-        "beartype >= 0.18.5",
+        "beartype >= 0.19.0",
     ],
 
 )
