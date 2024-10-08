@@ -251,7 +251,7 @@ if __name__ == "__main__":
         )
 
         proj_file = src / (project_name + ".py")
-        project_content = '''
+        project_content = f'''
 from beartype import beartype
 # TODO_imports
 
