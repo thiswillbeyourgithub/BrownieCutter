@@ -5,6 +5,7 @@
 * Inspired by [CookieCutter](https://cookiecutter.readthedocs.io/).
 
 # Getting started
+* As an uv tool: `uvx BrownieCutter --help`
 * From pypi: `uv pip install BrownieCutter` or `pip install BrownieCutter`
 * From git: git clone then `pip install .`
 * `BrownieCutter --help`
