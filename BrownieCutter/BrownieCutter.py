@@ -295,7 +295,7 @@ class {classname}:
             self.create_file(
                 project / ".gitignore",
                 content=(
-f'''
+'''
 **/*pycache*
 **/*egg-info*
 
