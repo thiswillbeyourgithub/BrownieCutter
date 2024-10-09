@@ -5,5 +5,6 @@
 * Inspired by [CookieCutter](https://cookiecutter.readthedocs.io/).
 
 # Getting started
-* ` python -m pip install -e .`
-* `python -m BrownieCutter --help`
+* From pypi: `uv pip install BrownieCutter` or `pip install BrownieCutter`
+* From git: git clone then `pip install .`
+* `BrownieCutter --help`
