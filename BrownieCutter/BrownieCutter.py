@@ -298,6 +298,10 @@ class {classname}:
 '''
 **/*pycache*
 **/*egg-info*
+''' + ('' if not create_venv else '''
+.env
+.env.leave
+''' ) + '''
 
 TODO_gitignore
 '''
