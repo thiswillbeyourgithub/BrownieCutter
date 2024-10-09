@@ -20,7 +20,7 @@ class BrownieCutter:
         classname: str = None,
         verbose: bool = True,
         create_git: bool = True,
-        create_pyenv: bool = True,
+        create_venv: str = "uv",
         typechecking: bool = True,
         ) -> None:
         """
@@ -36,7 +36,7 @@ class BrownieCutter:
 
         - create_git (bool, optional): If True, initializes a git repository in the project directory. Defaults to True.
 
-        - create_pyenv: create a new virtual env using pyenv with name bc_{project_name} Automatically activate it using .env and .env.leave files (thanks to autoenv). Defaults to True.
+        - create_venv (str, default 'uv'): create a new virtual env using uv with name bc_{project_name} Automatically activate it using .env and .env.leave files (thanks to autoenv). If set to 'pyenv' will use pyenv, otherwise will use 'uv'.
 
         - typechecking: automatically add beartype typechecking. Defaults to True.
         """
@@ -304,7 +304,7 @@ TODO_gitignore
             except Exception as err:
                 print(f"Couldn't init git dir: '{err}'")
 
-        if create_pyenv:
+        if create_venv == "pyenv":
             env_name = "bc_" + project_name.replace(" ", "_")
             os.system(f"cd {project_name} && pyenv virtualenv {sys.version.split(' ')[0]} {env_name} && touch .env .env.leave && pyenv activate {env_name} && python -m pip install build")
             if (project / ".env").exists() and (project / ".env.leave").exists():
@@ -320,6 +320,26 @@ TODO_gitignore
                 )
             else:
                 print(f"No {project_name}/.env file and .env.leave file found, assuming pyenv creation failed.")
+        elif create_venv == "uv":
+            env_name = "bc_" + project_name.replace(" ", "_")
+            os.system(f"cd {project_name} && uv venv {env_name} --python {sys.version.split(' ')[0]} && touch .env .env.leave && source .venv/bin/activate && uv pip install build")
+            if (project / ".env").exists() and (project / ".env.leave").exists():
+                self.create_file(
+                    project / ".env",
+                    content=f"source .venv/bin/activate",
+                    create=True,
+                )
+                self.create_file(
+                    project / ".env.leave",
+                    content="deactivate",
+                    create=True,
+                )
+            else:
+                print(f"No {project_name}/.env file and .env.leave file found, assuming uv venv creation failed.")
+        elif not create_venv:
+            print("No venv to create.")
+        else:
+            raise ValueError("The arg create_venv only accepts value 'pyenv' or 'uv'")
 
         print(f"\nDone creating {project_name}, you can now manually replace all the missing TODO.")
 
