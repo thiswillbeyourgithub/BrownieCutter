@@ -73,7 +73,7 @@ TODO_introduction
 
 # Getting started
 * From pypi:
-    * As a tool: `uvx {project_name}`  # TODO: can this be used as a tool?
+    * As a tool: `uvx {project_name}@latest --help`  # TODO: can this be used as a tool?
     * Via uv: `uv pip install {project_name}`
     * Via pip: `pip install {project_name}`
 * From github:
