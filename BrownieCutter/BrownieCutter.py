@@ -239,6 +239,7 @@ if __name__ == "__main__":
                 src / "__init__.py",
                 content=(
 f'''
+import sys
 import fire
 
 from .{project_name} import {classname}
@@ -248,6 +249,8 @@ __all__ = ["{classname}"]
 __VERSION__ = {classname}.VERSION
 
 def cli_launcher() -> None:
+    if sys.argv[-1] ==  "--version":
+        return(f"{project_name} version: ''' + "{__VERSION__}" + ''')
     fire.Fire({classname})
 
 if __name__ == "__main__":
