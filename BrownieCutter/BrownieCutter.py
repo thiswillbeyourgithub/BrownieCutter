@@ -72,7 +72,12 @@ f'''
 TODO_introduction
 
 # Getting started
-* ` python -m pip install -e .`
+* From pypi:
+    * Via uv: `uv pip install {project_name}`
+    * Via pip: `pip install {project_name}`
+* From github:
+* Clone this repo then `pip install .`
+
 TODO_tutorial
 '''
             )
