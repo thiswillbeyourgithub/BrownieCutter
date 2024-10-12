@@ -5,7 +5,7 @@ from .BrownieCutter import BrownieCutter
 
 __all__ = ["BrownieCutter"]
 
-__VERSION__ = BrownieCutter.VERSION
+__VERSION__ = BrownieCutter.__VERSION__
 
 def cli_launcher() -> None:
     if sys.argv[-1] ==  "--version":

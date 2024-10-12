@@ -6,7 +6,7 @@ import os
 
 @beartype  # this will apply to all methods
 class BrownieCutter:
-    VERSION: str = "0.1.14"
+    __VERSION__: str = "0.1.14"
 
     def __init__(self) -> None:
         """
@@ -106,7 +106,7 @@ push = false
 [bumpver.file_patterns]
 "bumpver.toml" = ['current_version = "{version}"']
 "setup.py" = ['version="{version}"']
-"{project_name}/{project_name}.py" = ['VERSION: str = "{version}"']
+"{project_name}/{project_name}.py" = ['__VERSION__: str = "{version}"']
 
 '''
             )
@@ -246,7 +246,7 @@ from .{project_name} import {classname}
 
 __all__ = ["{classname}"]
 
-__VERSION__ = {classname}.VERSION
+__VERSION__ = {classname}.__VERSION__
 
 def cli_launcher() -> None:
     if sys.argv[-1] ==  "--version":
@@ -279,7 +279,7 @@ class {classname}:
 '''
         project_content = project_content.strip().replace(
                     "VER_IGNORE_SION",
-                    "VERSION"
+                    "__VERSION__"
                 )
         if not typechecking:
             project_content = "".join(
