@@ -226,7 +226,7 @@ setup(
         self.create_file(
                 src / "__main__.py",
                 content=(
-f'''
+'''
 from . import cli_launcher
 
 if __name__ == "__main__":
@@ -339,7 +339,7 @@ TODO_gitignore
             if (project / ".env").exists() and (project / ".env.leave").exists():
                 self.create_file(
                     project / ".env",
-                    content=f"source .venv/bin/activate",
+                    content="source .venv/bin/activate",
                     create=True,
                 )
                 self.create_file(
