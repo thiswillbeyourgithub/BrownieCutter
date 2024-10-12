@@ -6,7 +6,7 @@ import os
 
 @beartype  # this will apply to all methods
 class BrownieCutter:
-    VERSION: str = "0.1.13"
+    VERSION: str = "0.1.14"
 
     def __init__(self) -> None:
         """
