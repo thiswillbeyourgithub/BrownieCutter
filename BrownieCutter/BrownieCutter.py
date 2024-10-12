@@ -250,7 +250,7 @@ __VERSION__ = {classname}.VERSION
 
 def cli_launcher() -> None:
     if sys.argv[-1] ==  "--version":
-        return(f"{project_name} version: ''' + "{__VERSION__}" + ''')
+        return(f"{project_name} version: ''' + "{__VERSION__}" + f'''")
     fire.Fire({classname})
 
 if __name__ == "__main__":
