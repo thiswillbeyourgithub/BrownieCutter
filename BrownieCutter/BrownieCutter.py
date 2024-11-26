@@ -339,7 +339,7 @@ TODO_gitignore
             if (project / ".env").exists() and (project / ".env.leave").exists():
                 self.create_file(
                     project / ".env",
-                    content="source .venv/bin/activate",
+                    content=f"source .{env_name}/bin/activate",
                     create=True,
                 )
                 self.create_file(
