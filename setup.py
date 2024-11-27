@@ -7,7 +7,7 @@ with open("README.md", "r") as readme:
 
 setup(
     name="BrownieCutter",
-    version="0.1.16",
+    version="0.1.17",
     description="Quick script to create new python project",
     long_description=long_description,
     long_description_content_type="text/markdown",
