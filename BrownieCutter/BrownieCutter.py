@@ -77,7 +77,7 @@ TODO_introduction
     * Via uv: `uv pip install {project_name}`
     * Via pip: `pip install {project_name}`
 * From github:
-* Clone this repo then `pip install .`
+    * Clone this repo then `pip install .`
 
 TODO_tutorial
 '''
