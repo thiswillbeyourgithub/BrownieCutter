@@ -301,6 +301,7 @@ class {classname}:
 '''
 **/*pycache*
 **/*egg-info*
+dist/
 ''' + ('' if not create_venv else '''
 .env
 .env.leave
