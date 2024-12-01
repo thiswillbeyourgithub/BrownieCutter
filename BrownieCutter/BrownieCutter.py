@@ -320,7 +320,7 @@ TODO_gitignore
 
         if create_venv == "pyenv":
             env_name = "bc_" + project_name.replace(" ", "_")
-            os.system(f"cd {project_name} && pyenv virtualenv {sys.version.split(' ')[0]} {env_name} && touch .env .env.leave && pyenv activate {env_name} && python -m pip install build")
+            os.system(f"cd {project_name} && pyenv virtualenv {sys.version.split(' ')[0]} {env_name} && touch .env .env.leave && pyenv activate {env_name} && python -m pip install build && python -m pip install bumpver")
             if (project / ".env").exists() and (project / ".env.leave").exists():
                 self.create_file(
                     project / ".env",
@@ -335,7 +335,7 @@ TODO_gitignore
             else:
                 print(f"No {project_name}/.env file and .env.leave file found, assuming pyenv creation failed.")
         elif create_venv == "uv":
-            os.system(f"cd {project_name} && uv venv --python {sys.version.split(' ')[0]} && touch .env .env.leave && sleep 1 && source .venv/bin/activate && uv pip install build && echo 'Succesfuly created venv using uv'")
+            os.system(f"cd {project_name} && uv venv --python {sys.version.split(' ')[0]} && touch .env .env.leave && sleep 1 && source .venv/bin/activate && uv pip install build && uv pip install bumpver && echo 'Succesfuly created venv using uv'")
             if (project / ".env").exists() and (project / ".env.leave").exists():
                 self.create_file(
                     project / ".env",
