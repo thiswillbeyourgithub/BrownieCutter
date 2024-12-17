@@ -14,5 +14,14 @@
 ### Roadmap
 <i>This TODO list is maintained automatically by [MdXLogseqTODOSync](https://github.com/thiswillbeyourgithub/MdXLogseqTODOSync)</i>
 <!-- BEGIN_TODO -->
+- add arg "requirements_source" to automatically populate the setup.py with them
+- store the file content as fulltext in a source dir instead of in a var
+- add arg "add to root"
+    - which automatically overwrites (copy not move) placeholders with what's given, for example to give a LICENSE.md
+- add arg "add to project dir"
+    - for example used to copy  the utils dir directly at the right location
+- add args to import code directly from a python file
+    - use ast to match the imports line at the top
+        - if there is a version number, automatically set it to this number
 <!-- END_TODO -->
 
