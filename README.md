@@ -9,3 +9,10 @@
 * From pypi: `uv pip install BrownieCutter` or `pip install BrownieCutter`
 * From git: git clone then `pip install .`
 * `BrownieCutter --help`
+
+
+### Roadmap
+<i>This TODO list is maintained automatically by [MdXLogseqTODOSync](https://github.com/thiswillbeyourgithub/MdXLogseqTODOSync)</i>
+<!-- BEGIN_TODO -->
+<!-- END_TODO -->
+
