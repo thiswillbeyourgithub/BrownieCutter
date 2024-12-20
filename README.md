@@ -14,6 +14,10 @@
 ### Roadmap
 <i>This TODO list is maintained automatically by [MdXLogseqTODOSync](https://github.com/thiswillbeyourgithub/MdXLogseqTODOSync)</i>
 <!-- BEGIN_TODO -->
+- refactor to store the full files as is in a subdir, then write a function that does the regex replacement, major code cleanup and readibility expected from this
+- add a pre commit hook file with isort, black
+- add lines necessary for using MdXLogseqTODOSync
+- fix the issue you found when refactoring wdoc about __init__.py vs __main__.py use the code of human readable seed for that
 - add arg "requirements_source" to automatically populate the setup.py with them
 - store the file content as fulltext in a source dir instead of in a var
 - add arg "add to root"
