@@ -22,10 +22,12 @@
 - store the file content as fulltext in a source dir instead of in a var
 - add arg "add to root"
     - which automatically overwrites (copy not move) placeholders with what's given, for example to give a LICENSE.md
+    - must support dirs too
 - add arg "add to project dir"
     - for example used to copy  the utils dir directly at the right location
 - add args to import code directly from a python file
     - use ast to match the imports line at the top
+    - use ast to get the class code you want to use
         - if there is a version number, automatically set it to this number
 <!-- END_TODO -->
 
