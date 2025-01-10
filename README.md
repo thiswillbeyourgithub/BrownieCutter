@@ -21,7 +21,7 @@
 - add arg "requirements_source" to automatically populate the setup.py with them
 - store the file content as fulltext in a source dir instead of in a var
 - add arg "add to root"
-    - which automatically overwrites (copy not move) placeholders with what's given, for example to give a LICENSE.md
+    - which automatically overwrites (copy not move) placeholders with what's given, for example to give a LICENSE
     - must support dirs too
 - add arg "add to project dir"
     - for example used to copy  the utils dir directly at the right location

@@ -60,7 +60,7 @@ class BrownieCutter:
         self.create_dir(src)
 
         self.create_file(
-            project / "LICENSE.md",
+            project / "LICENSE",
             content="TODO_license",
         )
 
@@ -313,7 +313,7 @@ TODO_gitignore
             )
             try:
                 self.p("Init git dir")
-                to_add = f".gitignore README.md setup.py LICENSE.md bumpver.toml {project_name}"
+                to_add = f".gitignore README.md setup.py LICENSE bumpver.toml {project_name}"
                 os.system(f"cd {project_name} && git init && git add {to_add} && git commit -m 'First commit (via BrownieCutter)'")
             except Exception as err:
                 print(f"Couldn't init git dir: '{err}'")
